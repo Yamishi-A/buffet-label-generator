@@ -16,7 +16,7 @@
       --card-lang-gap: 8px;          /* Spacing between different languages */
       --card-title-ing-gap: 1px;     /* Spacing between title & ingredients */
       --card-text-transform: uppercase;
-      --logo-height: 36px;
+      --logo-height: 50px;
 
       /* Dashboard Theme Default */
       --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
@@ -188,8 +188,21 @@
       pointer-events: none;
       z-index: 5;
     }
-    .cut-line-v { top: 0; bottom: 0; width: 0; border-left: 1px dashed var(--cut-line-color); }
-    .cut-line-h { left: 0; right: 0; height: 0; border-top: 1px dashed var(--cut-line-color); }
+
+    .cut-line-v {
+      top: 0;
+      bottom: 0;
+      width: 0;
+      border-left: 1px dashed var(--cut-line-color);
+    }
+
+    .cut-line-h {
+      left: 0;
+      right: 0;
+      height: 0;
+      border-top: 1px dashed var(--cut-line-color);
+    }
+
     .cut-v-1 { left: 76.5mm; }
     .cut-v-2 { left: 148.5mm; }
     .cut-v-3 { left: 220.5mm; }
@@ -365,8 +378,14 @@
       background: none;
     }
 
-    .color-picker-box input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
-    .color-picker-box input[type="color"]::-webkit-color-swatch { border: 1px solid #cbd5e1; border-radius: 6px; }
+    .color-picker-box input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    .color-picker-box input[type="color"]::-webkit-color-swatch {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+    }
 
     .hex-val {
       font-family: ui-monospace, monospace;
@@ -470,10 +489,26 @@
     }
 
     @media print {
-      body { background: none !important; padding: 0 !important; margin: 0 !important; }
-      .top-bar, .controls-dashboard { display: none !important; }
-      .app-wrapper { padding: 0 !important; gap: 0 !important; max-width: none !important; }
-      .preview-stage { padding: 0 !important; }
+      body {
+        background: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .top-bar, .controls-dashboard {
+        display: none !important;
+      }
+
+      .app-wrapper {
+        padding: 0 !important;
+        gap: 0 !important;
+        max-width: none !important;
+      }
+
+      .preview-stage {
+        padding: 0 !important;
+      }
+
       .a4-page {
         box-shadow: none !important;
         width: 297mm !important;
@@ -484,12 +519,17 @@
         border-radius: 0 !important;
         background: #ffffff !important;
       }
+
       .cut-line-v, .cut-line-h {
         border-color: #94a3b8 !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
-      @page { size: A4 landscape; margin: 0; }
+
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
     }
   </style>
 </head>
@@ -502,11 +542,13 @@
         <h1>Buffet Label Studio</h1>
         <span class="brand-badge">A4 Landscape • 8 Cards</span>
       </div>
+
       <div class="top-bar-actions">
         <button class="btn-theme-toggle" onclick="toggleDarkMode()">
           <span id="darkIcon">🌙</span>
           <span id="darkText">Dark Mode</span>
         </button>
+
         <button class="btn-print" onclick="window.print()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 6 2 18 2 18 9"></polyline>
@@ -538,10 +580,12 @@
             <input type="color" id="borderColor" value="#5bc0be">
             <span id="borderHex" class="hex-val">#5BC0BE</span>
           </div>
+
           <div class="color-picker-box">
             <input type="color" id="textColor" value="#5bc0be">
             <span id="textHex" class="hex-val">#5BC0BE</span>
           </div>
+
           <div class="color-picker-box">
             <input type="color" id="bgColor" value="#ffffff">
             <span id="bgHex" class="hex-val">#FFFFFF</span>
@@ -550,6 +594,7 @@
 
         <div class="control-group">
           <label>Quick Color Themes</label>
+
           <div class="swatches">
             <div class="swatch" style="background:#5bc0be" onclick="applyTheme('#5bc0be', '#5bc0be')"></div>
             <div class="swatch" style="background:#1b365d" onclick="applyTheme('#1b365d', '#1b365d')"></div>
@@ -563,13 +608,13 @@
         <hr style="border:0; border-top:1px solid var(--input-border);">
 
         <div class="control-group">
-          <label>Logo Size <span class="val-indicator" id="logoSizeVal">36px</span></label>
-          <input type="range" id="logoSize" min="20" max="50" value="36">
+          <label>Logo Size <span class="val-indicator" id="logoSizeVal">50px</span></label>
+          <input type="range" id="logoSize" min="20" max="50" value="50">
         </div>
 
         <div class="control-group">
           <label>Font Size <span class="val-indicator" id="fontSizeVal">0.72rem</span></label>
-          <input type="range" id="fontSize" min="0.50" max="0.95" step="0.01" value="0.72">
+          <input type="range" id="fontSize" min="0.50" max="2.00" step="0.01" value="0.72">
         </div>
 
         <!-- Language Spacing Control -->
@@ -586,18 +631,21 @@
 
         <div class="control-group">
           <label>Border Style & Width</label>
+
           <div style="display:flex; gap:8px;">
             <select id="borderStyle">
               <option value="solid" selected>Solid Border</option>
               <option value="double">Double Border</option>
               <option value="dashed">Dashed Border</option>
             </select>
+
             <input type="range" id="borderWidth" min="1" max="6" step="0.5" value="2.5">
           </div>
         </div>
 
         <div class="control-group">
           <label>Text Case</label>
+
           <select id="textTransform">
             <option value="uppercase" selected>UPPERCASE</option>
             <option value="capitalize">Title Case</option>
@@ -610,6 +658,7 @@
       <div class="control-card">
         <div class="section-title">
           <span>Label Content (1 Line = 1 Card)</span>
+
           <div class="preset-btns">
             <button class="btn-preset" onclick="loadSample('dishes')">Sample: Dishes</button>
             <button class="btn-preset" onclick="loadSample('fruit')">Sample: Fruit</button>
@@ -617,9 +666,9 @@
         </div>
 
         <div class="control-group" style="margin-bottom: 4px;">
-          <a href="https://gemini.google.com/gem/1ikNPq5aTkdJIGP0vCJvz-Sl0iuJNumkm?usp=sharing" 
-             target="_blank" 
-             rel="noopener noreferrer" 
+          <a href="https://gemini.google.com/gem/1ikNPq5aTkdJIGP0vCJvz-Sl0iuJNumkm?usp=sharing"
+             target="_blank"
+             rel="noopener noreferrer"
              style="display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px 14px; background: #1a73e8; color: #ffffff; font-weight: 600; font-size: 0.85rem; text-decoration: none; border-radius: 8px;">
             ✨ Open AI Label Assistant
           </a>
@@ -804,6 +853,7 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
       ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
+
       const displayText = label.length > 7 ? label.substring(0, 6) + '.' : label;
       ctx.fillText(displayText.toUpperCase(), 60, 60);
 
@@ -814,12 +864,13 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
     function parseLine(line) {
       const parts = line.split('|');
       const mainPart = (parts[0] || '').trim();
+
       const explicitAllergens = parts[1]
         ? parts[1].split(',').map(s => s.trim().toLowerCase()).filter(Boolean)
         : [];
 
       const entries = [];
-      
+
       // Match each "TITLE (INGREDIENTS)" language pair cleanly
       const langBlockRegex = /([^()\n]+?)\s*\(([^()]*)\)/g;
       let match;
@@ -828,6 +879,7 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
         // Strip leading commas or spaces left over between language blocks
         let title = match[1].trim().replace(/^,\s*/, '');
         const desc = match[2].trim();
+
         if (title || desc) {
           entries.push({ title, desc });
         }
@@ -849,7 +901,7 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
         }
       });
 
-      const finalAllergens = explicitAllergens.length > 0 
+      const finalAllergens = explicitAllergens.length > 0
         ? Array.from(new Set(explicitAllergens))
         : Array.from(new Set(autoAllergens));
 
@@ -862,24 +914,26 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
     function renderCards() {
       const lines = csvDataInput.value.split('\n').filter(line => line.trim() !== '');
       const data = lines.map(parseLine);
-      
+
       const cutLinesHTML = `
         <div class="cut-line-v cut-v-1"></div>
         <div class="cut-line-v cut-v-2"></div>
         <div class="cut-line-v cut-v-3"></div>
         <div class="cut-line-h cut-h-1"></div>
       `;
+
       a4Page.innerHTML = cutLinesHTML;
 
       for (let i = 0; i < 8; i++) {
         const cardData = data[i] || { entries: [], allergens: [] };
-        
+
         const cardEl = document.createElement('div');
         cardEl.className = 'card';
 
         // 1. Logos (Max Top)
         const logosDiv = document.createElement('div');
         logosDiv.className = 'card-logos';
+
         logosDiv.innerHTML = `
           <img src="${ASSETS.logoLeft}" alt="Logo Left" onerror="this.style.opacity='0.2'">
           <img src="${ASSETS.logoRight}" alt="Logo Right" onerror="this.style.opacity='0.2'">
@@ -899,12 +953,14 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
             titleEl.textContent = entry.title;
             langBlock.appendChild(titleEl);
           }
+
           if (entry.desc) {
             const descEl = document.createElement('div');
             descEl.className = 'ingredients';
             descEl.textContent = `(${entry.desc})`;
             langBlock.appendChild(descEl);
           }
+
           textDiv.appendChild(langBlock);
         });
 
@@ -920,7 +976,7 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
           img.src = imgSrc;
           img.alt = allergenKey;
           img.title = allergenKey;
-        
+
           // DYNAMIC ICON SIZING RULES:
           // 1 to 3 icons: Uniform 80px height in a SINGLE row (never wraps).
           // 4 icons: 2x2 grid layout at 68px height.
@@ -929,7 +985,7 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
             img.style.height = '80px';
             img.style.maxHeight = '80px';
             img.style.objectFit = 'contain';
-        
+
             if (count === 1) {
               img.style.width = 'auto';
               img.style.maxWidth = '75%';
@@ -940,24 +996,28 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
               img.style.width = 'auto';
               img.style.maxWidth = 'calc(31% - 4px)';
             }
+
           } else if (count === 4) {
             // 4 icons: 2x2 grid
             img.style.width = 'calc(44% - 4px)';
             img.style.height = '68px';
             img.style.maxHeight = '68px';
             img.style.objectFit = 'contain';
+
           } else if (count <= 6) {
             // 5 to 6 icons: 2 rows of 3
             img.style.width = 'calc(31% - 4px)';
             img.style.height = '52px';
             img.style.maxHeight = '52px';
             img.style.objectFit = 'contain';
+
           } else if (count <= 8) {
             // 7 to 8 icons: 2 rows of 4
             img.style.width = 'calc(23% - 4px)';
             img.style.height = '42px';
             img.style.maxHeight = '42px';
             img.style.objectFit = 'contain';
+
           } else {
             // 9+ icons
             img.style.width = 'calc(18% - 4px)';
@@ -965,11 +1025,12 @@ FRUIT SALAD (Mixed Fresh Fruits), ΦΡΟΥΤΟΣΑΛΑΤΑ (Ανάμεικτα �
             img.style.maxHeight = '32px';
             img.style.objectFit = 'contain';
           }
-        
+
           img.onerror = () => {
             img.style.border = '1px dashed #cbd5e1';
             img.style.borderRadius = '50%';
           };
+
           allergenDiv.appendChild(img);
         });
 
